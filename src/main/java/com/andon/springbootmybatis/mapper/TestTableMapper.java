@@ -1,6 +1,9 @@
 package com.andon.springbootmybatis.mapper;
 
 import com.andon.springbootmybatis.domain.TestTable;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @author Andon
@@ -18,4 +21,8 @@ public interface TestTableMapper {
     int updateByPrimaryKeySelective(TestTable record);
 
     int updateByPrimaryKey(TestTable record);
+
+    int insertTestTableBatch(List<TestTable> testTableList);
+
+    List<TestTable> selectTestTableLimit(@Param("row") int row, @Param("size") int size);
 }

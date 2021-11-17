@@ -10,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Andon
@@ -22,6 +24,23 @@ public class DatabaseTest {
 
     @Resource
     private TestTableMapper testTableMapper;
+
+    @Test
+    public void test04() {
+        List<TestTable> list = testTableMapper.selectTestTableLimit(0, 5);
+        log.info("list:{}", JSONObject.toJSONString(list));
+    }
+
+    @Test
+    public void test03() {
+        List<TestTable> list = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            TestTable testTable = TestTable.builder().key(String.valueOf(i)).value(String.valueOf(i)).build();
+            list.add(testTable);
+        }
+        int row = testTableMapper.insertTestTableBatch(list);
+        log.info("row:{}", row);
+    }
 
     @Test
     public void test02() {
