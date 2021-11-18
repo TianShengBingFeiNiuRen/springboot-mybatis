@@ -27,11 +27,11 @@ public class DatabaseTest {
 
     @Test
     public void test06() {
-//        Integer id = 2;
-        Integer id = null;
+        List<Integer> idList = new ArrayList<>();
+        idList.add(7);
         String key = "l";
 //        String key = null;
-        List<TestTable> list = testTableMapper.selectTestTableSelective(id, key, 0, 5);
+        List<TestTable> list = testTableMapper.selectTestTableSelective(idList, key, 0, 5);
         log.info("list.size={} list:{}", list.size(), JSONObject.toJSONString(list));
     }
 
