@@ -41,13 +41,13 @@ public class TestTable implements Serializable {
     * 更新时间
     */
     @ApiModelProperty(value="更新时间")
-    private Date updateTime;
+    private String updateTime;
 
     /**
     * 创建时间
     */
     @ApiModelProperty(value="创建时间")
-    private Date createTime;
+    private String createTime;
 
     private static final long serialVersionUID = 1L;
 }

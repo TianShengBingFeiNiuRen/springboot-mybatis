@@ -7,8 +7,8 @@
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="key" jdbcType="VARCHAR" property="key"/>
         <result column="value" jdbcType="VARCHAR" property="value"/>
-        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
-        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <!--        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>-->
+        <!--        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>-->
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->
@@ -103,9 +103,30 @@
             (#{testTable.key,jdbcType=VARCHAR}, #{testTable.value,jdbcType=VARCHAR})
         </foreach>
     </insert>
-    <select id="selectTestTableLimit" resultMap="BaseResultMap">
-        SELECT `id`, `key`, `value`, `update_time`, `create_time`
+    <select id="selectTestTable" resultMap="BaseResultMap">
+        SELECT `id`, `key`, `value`, `update_time` AS `updateTime`, `create_time` AS `createTime`
         FROM `test_table`
+        ORDER BY `update_time` DESC
+        LIMIT #{row},#{size}
+    </select>
+    <select id="selectTestTableLikeKey" resultMap="BaseResultMap">
+        SELECT `id`, `key`, `value`, `update_time` AS `updateTime`, `create_time` AS `createTime`
+        FROM `test_table`
+        WHERE `key` LIKE CONCAT('%', #{key,jdbcType=VARCHAR}, '%')
+        ORDER BY `update_time` DESC
+        LIMIT #{row},#{size}
+    </select>
+    <select id="selectTestTableSelective" resultMap="BaseResultMap">
+        SELECT `id`, `key`, `value`, `update_time` AS `updateTime`, `create_time` AS `createTime`
+        FROM `test_table`
+        <where>
+            <if test="id != null">
+                `id` > #{id,jdbcType=INTEGER}
+            </if>
+            <if test="key != null and key != ''">
+                AND `key` LIKE CONCAT('%', #{key,jdbcType=VARCHAR}, '%')
+            </if>
+        </where>
         ORDER BY `update_time` DESC
         LIMIT #{row},#{size}
     </select>

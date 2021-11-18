@@ -24,5 +24,9 @@ public interface TestTableMapper {
 
     int insertTestTableBatch(List<TestTable> testTableList);
 
-    List<TestTable> selectTestTableLimit(@Param("row") int row, @Param("size") int size);
+    List<TestTable> selectTestTable(@Param("row") int row, @Param("size") int size);
+
+    List<TestTable> selectTestTableLikeKey(@Param("key") String key, @Param("row") int row, @Param("size") int size);
+
+    List<TestTable> selectTestTableSelective(@Param("id") Integer id, @Param("key") String key, @Param("row") int row, @Param("size") int size);
 }

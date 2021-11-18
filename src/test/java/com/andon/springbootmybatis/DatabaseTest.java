@@ -26,8 +26,25 @@ public class DatabaseTest {
     private TestTableMapper testTableMapper;
 
     @Test
+    public void test06() {
+//        Integer id = 2;
+        Integer id = null;
+        String key = "l";
+//        String key = null;
+        List<TestTable> list = testTableMapper.selectTestTableSelective(id, key, 0, 5);
+        log.info("list.size={} list:{}", list.size(), JSONObject.toJSONString(list));
+    }
+
+    @Test
+    public void test05() {
+        String key = "l";
+        List<TestTable> list = testTableMapper.selectTestTableLikeKey(key, 0, 5);
+        log.info("list.size={} list:{}", list.size(), JSONObject.toJSONString(list));
+    }
+
+    @Test
     public void test04() {
-        List<TestTable> list = testTableMapper.selectTestTableLimit(0, 5);
+        List<TestTable> list = testTableMapper.selectTestTable(0, 5);
         log.info("list:{}", JSONObject.toJSONString(list));
     }
 
