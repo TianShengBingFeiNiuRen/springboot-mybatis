@@ -6,4 +6,4 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 
 mybatis:
-  mapper-locations: classpath:mapperxml/*Mapper.xml # mapper接口对应xml文件所在包位置
+  mapper-locations: classpath:mapperxml/*Mapper.xml # mapper鎺ュ彛瀵瑰簲xml鏂囦欢鎵�鍦ㄥ寘浣嶇疆
