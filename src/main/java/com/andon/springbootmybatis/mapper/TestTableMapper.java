@@ -10,6 +10,10 @@ import java.util.List;
  * 2021/11/17
  */
 public interface TestTableMapper {
+
+    /**
+     * 自动生成
+     */
     int deleteByPrimaryKey(Integer id);
 
     int insert(TestTable record);
@@ -22,7 +26,10 @@ public interface TestTableMapper {
 
     int updateByPrimaryKey(TestTable record);
 
-    int insertTestTableBatch(List<TestTable> testTableList);
+    /**
+     * 自定义
+     */
+    int insertTestTableBatch(@Param("testTableList") List<TestTable> testTableList);
 
     List<TestTable> selectTestTable(@Param("row") int row, @Param("size") int size);
 

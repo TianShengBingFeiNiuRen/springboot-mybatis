@@ -99,7 +99,7 @@
     <insert id="insertTestTableBatch">
         INSERT INTO `test_table` (`key`, `value`)
                 VALUES
-        <foreach collection="list" item="testTable" separator=",">
+        <foreach collection="testTableList" item="testTable" separator=",">
             (#{testTable.key,jdbcType=VARCHAR}, #{testTable.value,jdbcType=VARCHAR})
         </foreach>
     </insert>
