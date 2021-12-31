@@ -4,6 +4,7 @@ import com.andon.springbootmybatis.domain.TestTable;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Andon
@@ -36,4 +37,6 @@ public interface TestTableMapper {
     List<TestTable> selectTestTableLikeKey(@Param("key") String key, @Param("row") int row, @Param("size") int size);
 
     List<TestTable> selectTestTableSelective(@Param("idList") List<Integer> idList, @Param("key") String key, @Param("row") int row, @Param("size") int size);
+
+    List<Map<String, String>> selectTestTableAll();
 }

@@ -1,6 +1,7 @@
 package com.andon.springbootmybatis;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.andon.springbootmybatis.domain.TestTable;
 import com.andon.springbootmybatis.mapper.TestTableMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Andon
@@ -24,6 +26,12 @@ public class DatabaseTest {
 
     @Resource
     private TestTableMapper testTableMapper;
+
+    @Test
+    public void test07() {
+        List<Map<String, String>> maps = testTableMapper.selectTestTableAll();
+        log.info("maps:{}", maps);
+    }
 
     @Test
     public void test06() {

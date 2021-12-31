@@ -133,4 +133,9 @@
         ORDER BY `update_time` DESC
         LIMIT #{row},#{size}
     </select>
+    <select id="selectTestTableAll" resultType="java.util.Map">
+        SELECT *
+        FROM `test_table`
+        ORDER BY `create_time` DESC;
+    </select>
 </mapper>

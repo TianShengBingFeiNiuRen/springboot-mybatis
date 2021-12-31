@@ -6,4 +6,6 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 
 mybatis:
+  configuration:
+    call-setters-on-nulls: true # 不忽略查询结果为null的字段
   mapper-locations: classpath:mapperxml/*Mapper.xml # mapper接口对应xml文件所在包位置
